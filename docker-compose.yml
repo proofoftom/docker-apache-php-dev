@@ -1,0 +1,26 @@
+app:
+  build: .
+  ports:
+   - "80:80"
+  links:
+   - mysql
+  volumes:
+   - ./app:/var/www/html
+   - ./ssh:/root/.ssh
+  environment:
+#   - GIT_NAME={your_git_name}
+#   - GIT_EMAIL={your_git_email}
+mysql:
+  image: percona
+  environment:
+   - MYSQL_ROOT_PASSWORD=root
+   - MYSQL_DATABASE=app
+# Common additional containers
+#redis:
+#  image: redis
+#memcache:
+#  image: memcache
+#solr:
+#  image: solr
+#varnish:
+#  image: varnish
